@@ -16,16 +16,12 @@ export async function listMyResumes() {
 }
 
 export async function getResume(data: { id: string }) {
-  return apiFetch<Record<string, unknown>>("/api/resumes/get", {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
+  return apiFetch<Record<string, unknown>>(`/api/resumes/${data.id}`);
 }
 
 export async function deleteResume(data: { id: string }) {
-  return apiFetch<{ ok: boolean }>("/api/resumes/delete", {
-    method: "POST",
-    body: JSON.stringify(data),
+  return apiFetch<{ ok: boolean }>(`/api/resumes/${data.id}`, {
+    method: "DELETE",
   });
 }
 
