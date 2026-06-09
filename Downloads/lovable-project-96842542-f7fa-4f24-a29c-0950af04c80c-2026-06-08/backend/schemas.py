@@ -1,15 +1,16 @@
 from typing import Literal
-from pydantic import BaseModel, Field, HttpUrl
+
+from pydantic import BaseModel, EmailStr, Field, HttpUrl
 
 
 class SignUpRequest(BaseModel):
-    email: str = Field(min_length=3, max_length=255)
+    email: EmailStr
     password: str = Field(min_length=6, max_length=128)
     full_name: str | None = Field(default=None, max_length=200)
 
 
 class SignInRequest(BaseModel):
-    email: str
+    email: EmailStr
     password: str
 
 

@@ -98,7 +98,7 @@ async def call_ai_json(system_prompt: str, user_prompt: str, mock_fn=None) -> di
         if res.status_code == 402:
             raise ValueError("AI credits exhausted. Please top up Lovable AI credits.")
         if not res.is_success:
-            raise ValueError(f"AI request failed ({res.status_code}): {res.text}")
+            raise ValueError(f"AI request failed ({res.status_code})")
 
         data = res.json()
         text = data.get("choices", [{}])[0].get("message", {}).get("content", "{}")
